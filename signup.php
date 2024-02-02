@@ -7,7 +7,7 @@
     <style>
         .hidden {
             display: none;
-        }
+        }  
     </style>
 </head>
 
@@ -60,7 +60,7 @@ class UserSignup {
             echo "Error: " . $this->conn->error;
         }
     }
-
+  
     public function closeConnection() {
         $this->conn->close();
     }

@@ -1,3 +1,42 @@
+<?php 
+require('connect.php'); 
+session_start(); 
+
+
+
+$hwc = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE Name = 'hwchamp'"));
+$lhwc = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE Name = 'lhwchamp'"));
+$mwc = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE Name = 'mwchamp'"));
+$wwc = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE Name = 'wwchamp'"));
+$lwc = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE Name = 'lwchamp'"));
+$ftwc = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE Name = 'ftwchamp'"));
+$bwc = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE Name = 'bwchamp'"));
+$fwc = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE Name = 'fwchamp'"));
+
+$c1 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM champs WHERE ID = 1"));
+$c2 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM champs WHERE ID = 2"));
+$c3 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM champs WHERE ID = 3"));
+$c4 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM champs WHERE ID = 4"));
+$c5 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM champs WHERE ID = 5"));
+$c6 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM champs WHERE ID = 6"));
+$c7 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM champs WHERE ID = 7"));
+$c8 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM champs WHERE ID = 8"));
+$c9 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM champs WHERE ID = 9"));
+
+$result2 = mysqli_query($conn, "SELECT * FROM hwcontenders");
+$result3 = mysqli_query($conn, "SELECT * FROM lhwcontenders");  
+$result4 = mysqli_query($conn, "SELECT * FROM mwcontenders");
+$result5 = mysqli_query($conn, "SELECT * FROM wwcontenders");
+$result6 = mysqli_query($conn, "SELECT * FROM lwcontenders");
+$result7 = mysqli_query($conn, "SELECT * FROM ftwcontenders");
+$result8 = mysqli_query($conn, "SELECT * FROM bwcontenders");
+$result9 = mysqli_query($conn, "SELECT * FROM fwcontenders");
+
+ 
+
+
+?>  
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,426 +47,215 @@
 </head>
 
 <body>
-    <section id="section1">
+<section id="section1">  
     <div class="space"><h2>Heavyweight</h2><button class="back"><a href="Main.php">back</a></button></div>
-       <table class="hw">
+    <table class="hw">
         <tbody>
-            <tr>
-                <td class="jj1">C</td>
-                <td class="jj">Jon Jones (27-1-0) <br><img src="jon.jpg" alt=""></td>
-            </tr>
-            <tr>
-                <td class="ranks">1</td>
-                <td>Tom Aspinal (14-3-0)</td>
-            </tr>
-            <tr>
-                <td class="ranks">2</td>
-                <td>Ciryl Gane (12-2-0)</td>
-            </tr>
-            <tr>
-                <td class="ranks">3</td>
-                <td>Sergei Pavlovic (18-2-0)</td>
-            </tr>
-            <tr>
-                <td class="ranks">4</td>
-                <td>Stipe Miocic (20-4-0)</td>
-            </tr>
-            <tr>
-                <td class="ranks">5</td>
-                <td>Curtis Blaydes (17-4-0)</td>
-            </tr>
-            <tr>
-                <td class="ranks">6</td>
-                <td>Alexander Volkov (37-10-0)</td>
-            </tr>
-            <tr>
-                <td class="ranks">7</td>
-                <td>Jailton Almeida (20-2-0)</td>
-            </tr>
-            <tr>
-                <td class="ranks">8</td>
-                <td>Sergeri Spivac (16-3-0)</td>
-            </tr>
-            <tr>
-                <td class="ranks">9</td>
-                <td>Tai Tuivasa (15-6-0)</td>
-            </tr>
-            <tr>
-                <td class="ranks">10</td>
-                <td>Derrick Lewis (27-12-0)</td>
-            </tr>
+          <?php  
+          for ($i = 1; $i <= 10 && $row2 = mysqli_fetch_assoc($result2); $i++) {
+            if($i==1){    ?> 
+             <td class ="jj1">C</td>
+             <td class = "jj"><?php echo $c1['Name'];?>(<?php echo $c1['Wins']. '-' .$c1['Losses'] . '-' . $c1['Draws'];?>)<br><img src="<?php echo $hwc['Link'] ?>" alt=""></td>
+
+                 
+           <?php }   ?>     
+      
+        <tr>
+            <td class="ranks"><?php echo $i; ?></td>
+            <td><?php echo $row2['Name']; ?> (<?php echo $row2['Wins'] . '-' . $row2['Losses'] . '-' . $row2['Draws']; ?>)</td>
+        </tr>
+        <?php
+        
+    }
+        ?>
         </tbody>
     </table>
-    </section>
+</section>
+
 <br><br>
 <section id="section2">
-    <body>
-        <div class="space"><h2>LightHeavyweight</h2></div>
-           <table class="hw">
-            <tbody>
-                <tr>
-                    <td class="jj1">C</td>
-                    <td class="jj">Alex Pereira (9-2-0) <br><img src="pereira.jpg" alt=""></td>
-                </tr>
-                <tr>
-                    <td class="ranks">1</td>
-                    <td>Jamal Hill (12-1-0)</td>
-                </tr>
-                <tr>
-                    <td class="ranks">2</td>
-                    <td>Jiri Prochazka (29-4-1)</td>
-                </tr>
-                <tr>
-                    <td class="ranks">3</td>
-                    <td>Magomed Ankalaev (18-1-1)</td>
-                </tr>
-                <tr>
-                    <td class="ranks">4</td>
-                    <td>Jan Blachowicz (29-10-1)</td>
-                </tr>
-                <tr>
-                    <td class="ranks">5</td>
-                    <td>Nikita Krylov (30-9-0)</td>
-                </tr>
-                <tr>
-                    <td class="ranks">6</td>
-                    <td>Johnny Walker (21-7-0)</td>
-                </tr>
-                <tr>
-                    <td class="ranks">7</td>
-                    <td>Antony Smith (37-18-0)</td>
-                </tr>
-                <tr>
-                    <td class="ranks">8</td>
-                    <td>Volkan Oezdemir (19-7-0)</td>
-                </tr>
-                <tr>
-                    <td class="ranks">9</td>
-                    <td>Ryan Spann (21-9-0)</td>
-                </tr>
-                <tr>
-                    <td class="ranks">10</td>
-                    <td>Khalil Rountree(13-5-0)</td>
-                </tr>
-            </tbody>
-        </table>
-</section>
+<div class="space"><h2>LightHeavyweight</h2><button class="back"><a href="Main.php">back</a></button></div>
+    <table class="hw">
+        <tbody>
+        
+        <?php    for ($g = 1; $g <= 10 && $row3 = mysqli_fetch_assoc($result3); $g++) {
+            if($g==1){    ?>
+             <td class ="jj1">C</td>
+             <td class = "jj"><?php echo $c2['Name'];?>(<?php echo $c2['Wins']. '-' .$c2['Losses'] . '-' . $c2['Draws'];?>)<br><img src="<?php echo $lhwc['Link'] ?>" alt=""></td>
+
+               
+           <?php }   ?>     
+    
+        <tr>
+            <td class="ranks"><?php echo $g; ?></td>
+            <td><?php echo $row3['Name']; ?> (<?php echo $row3['Wins'] . '-' . $row3['Losses'] . '-' . $row3['Draws']; ?>)</td>
+        </tr>
+        <?php
+        }
+         
+        ?>
+        </tbody>
+    </table>
+
+</section> 
 <br><br> 
 <section id="section3">
-    <div class="space"><h2>Middleweight</h2></div>
+<div class="space"><h2>Middleweight</h2><button class="back"><a href="Main.php">back</a></button></div>
     <table class="hw">
-     <tbody>
-         <tr>
-             <td class="jj1">C</td>
-             <td class="jj">Sean Strickland (28-5-0) <br><img src="strickland.jpg" alt=""></td>
-         </tr>
-         <tr>
-             <td class="ranks">1</td>
-             <td>Israel Adesanya (24-3-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">2</td>
-             <td>Dricus Duplessis (20-2-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">3</td>
-             <td>Robert Whittaker (25-7-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">4</td>
-             <td>Jared Cannonier (17-6-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">5</td>
-             <td>Marvin Vettori (19-7-1)</td>
-         </tr>
-         <tr>
-             <td class="ranks">6</td>
-             <td>Paulo Costa (14-2-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">7</td>
-             <td>Roman Dolidze (12-2-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">8</td>
-             <td>Brendan Allen (23-5-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">9</td>
-             <td>Khamzat Chimaev (13-0-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">10</td>
-             <td>Jack Hermansson (23-8-0)</td>
-         </tr>
-     </tbody>
- </table>
+        <tbody>
+        
+        <?php    for ($j = 1; $j <= 10 && $row4 = mysqli_fetch_assoc($result4); $j++) {
+            if($j==1){    ?>
+             <td class ="jj1">C</td>
+             <td class = "jj"><?php echo $c3['Name'];?>(<?php echo $c3['Wins']. '-' .$c3['Losses'] . '-' . $c3['Draws'];?>)<br><img src="<?php echo $mwc['Link'] ?>" alt=""></td>
+
+               
+           <?php }   ?>     
+    
+        <tr>
+            <td class="ranks"><?php echo $j; ?></td>
+            <td><?php echo $row4['Name']; ?> (<?php echo $row4['Wins'] . '-' . $row4['Losses'] . '-' . $row4['Draws']; ?>)</td>
+        </tr>
+        <?php
+        }
+         
+        ?>
+        </tbody>
+    </table>
 </section>
 <br><br>
 <section id="section4">
-    <div class="space"><h2>Welterweight</h2></div>
+
+<div class="space"><h2>Welterweight</h2><button class="back"><a href="Main.php">back</a></button></div>
     <table class="hw">
-     <tbody>
-         <tr>
-             <td class="jj1">C</td>
-             <td class="jj">Leon Edwards (21-4-0) <br><img src="leon.jpg" alt=""></td>
-         </tr>
-         <tr>
-             <td class="ranks">1</td>
-             <td>Kamaru Usman (20-3-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">2</td>
-             <td>Belal Muhammad (23-3-0 )</td>
-         </tr>
-         <tr>
-             <td class="ranks">3</td>
-             <td>Colby Covington (17-3-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">4</td>
-             <td>Gilbert Burns (22-6-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">5</td>
-             <td>Shavkat Rakhmonov (17-0-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">6</td>
-             <td>Stephen Thompson (17-6-1)</td>
-         </tr>
-         <tr>
-             <td class="ranks">7</td>
-             <td>Geoff Neal (15-5-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">8</td>
-             <td>Vicente Luque (22-9-1)</td>
-         </tr>
-         <tr>
-             <td class="ranks">9</td>
-             <td>Sean Brady (16-1-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">10</td>
-             <td>Ian Garry (13-0-0)</td>
-         </tr>
-     </tbody>
- </table>
+        <tbody>
+            
+        <?php    for ($l = 1; $l <= 10 && $row5 = mysqli_fetch_assoc($result5); $l++) {
+            if($l==1){    ?>
+             <td class ="jj1">C</td>
+             <td class = "jj"><?php echo $c4['Name'];?>(<?php echo $c4['Wins']. '-' .$c4['Losses'] . '-' . $c4['Draws'];?>)<br><img src="<?php echo $wwc['Link']  ?>" alt=""></td>
+
+               
+           <?php }   ?>     
+    
+        <tr>
+            <td class="ranks"><?php echo $l; ?></td>
+            <td><?php echo $row5['Name']; ?> (<?php echo $row5['Wins'] . '-' . $row5['Losses'] . '-' . $row5['Draws']; ?>)</td>
+        </tr>
+        <?php
+        }
+         
+        ?>
+        </tbody>
+    </table>
+
 </section>
 <br><br>
 <section id="section5">
-    <div class="space"><h2>Lightweight</h2></div>
+<div class="space"><h2>Lightweight</h2><button class="back"><a href="Main.php">back</a></button></div>
     <table class="hw">
-     <tbody>
-         <tr>
-             <td class="jj1">C</td>
-             <td class="jj">Islam Makachev (25-1-0) <br><img src="islam.jpg" alt=""></td>
-         </tr>
-         <tr>
-             <td class="ranks">1</td>
-             <td>Charles Oliverira (34-9-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">2</td>
-             <td>Justin Gaethje (26-4-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">3</td>
-             <td>Dustin Porier (29-8-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">4</td>
-             <td>Arman Tsarukyan (21-3-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">5</td>
-             <td>Michael Chandler (23-8-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">6</td>
-             <td>Mateutz Gamrot(23-2-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">7</td>
-             <td>Beneil Dariush (22-6-1)</td>
-         </tr>
-         <tr>
-             <td class="ranks">8</td>
-             <td>Rafael Fiziev(12-3-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">9</td>
-             <td>Dan Hooker(23-12-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">10</td>
-             <td>Jalin Turner(14-7-0)</td>
-         </tr>
-     </tbody>
- </table>
+        <tbody>
+        
+        <?php    for ($t = 1; $t <= 10 && $row6 = mysqli_fetch_assoc($result6); $t++) {
+            if($t==1){    ?>
+             <td class ="jj1">C</td>
+             <td class = "jj"><?php echo $c5['Name'];?>(<?php echo $c5['Wins']. '-' .$c5['Losses'] . '-' . $c5['Draws'];?>)<br><img src="<?php echo $lwc['Link']  ?>" alt=""></td>
+
+               
+           <?php }   ?>     
+    
+        <tr>
+            <td class="ranks"><?php echo $t; ?></td>
+            <td><?php echo $row6['Name']; ?> (<?php echo $row6['Wins'] . '-' . $row6['Losses'] . '-' . $row6['Draws']; ?>)</td>  
+        </tr>
+        <?php
+        }
+         
+        ?>
+        </tbody>
+    </table>
  
 </section>
 <br><br>
 <section id="section6">
-    <div class="space"><h2>Featherweight</h2></div>
+
+<div class="space"><h2>Featherweight</h2><button class="back"><a href="Main.php">back</a></button></div>
     <table class="hw">
-     <tbody>
-         <tr>
-             <td class="jj1">C</td>
-             <td class="jj">Alexander Volkanovski (26-3-0) <br><img src="volk.jpg" alt=""></td>
-         </tr>
-         <tr>
-             <td class="ranks">1</td>
-             <td>Max Holloway (25-7-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">2</td>
-             <td>Yair Rodriguez (16-4-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">3</td>
-             <td>Brian Ortega (15-3-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">4</td>
-             <td>Arnold Allen (19-2-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">5</td>
-             <td>Ilia Topuria (14-0-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">6</td>
-             <td>Josh Emmet (18-4-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">7</td>
-             <td>Calvin Kattar (23-7-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">8</td>
-             <td>Giga Chikadze (15-3-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">9</td>
-             <td>Movsar Evloev (17-0-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">10</td>
-             <td>Bryce Mitchell (16-2-0)</td>
-         </tr>
-     </tbody>
- </table>
+        <tbody>
+        
+        <?php    for ($u = 1; $u <= 10 && $row7 = mysqli_fetch_assoc($result7); $u++) { 
+            if($u==1){    ?>
+             <td class ="jj1">C</td>
+             <td class = "jj"><?php echo $c6['Name'];?>(<?php echo $c6['Wins']. '-' .$c6['Losses'] . '-' . $c6['Draws'];?>)<br><img src="<?php  echo $ftwc['Link']  ?>" alt=""></td>
+
+               
+           <?php }   ?>     
+    
+        <tr>
+            <td class="ranks"><?php echo $u; ?></td>
+            <td><?php echo $row7['Name']; ?> ( <?php echo $row7['Wins'] . '-' . $row7['Losses'] . '-' . $row7['Draws']; ?>)</td>
+        </tr>   
+        <?php
+        }
+         
+        ?>
+        </tbody>
+    </table>
+ 
 </section>
 <br><br>
 <section id="section7">
-    <div class="space"><h2>Bantamweight</h2></div>
+   
+<div class="space"><h2>Bantamweight</h2><button class="back"><a href="Main.php">back</a></button></div>
     <table class="hw">
-     <tbody>
-         <tr>
-             <td class="jj1">C</td>
-             <td class="jj">Sean O Maley (17-1-0) <br><img src="omaley.jpg" alt=""></td>
-         </tr>
-         <tr>
-             <td class="ranks">1</td>
-             <td>Aljamain Sterling (23-4-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">2</td>
-             <td>Merab Dvalishvili (16-4-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">3</td>
-             <td>Henry Cejudo (16-3-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">4</td>
-             <td>Cory Sandhagen (17-4-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">5</td>
-             <td>Petr Yan (16-5-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">6</td>
-             <td>Marlon Vera (21-8-1)</td>
-         </tr>
-         <tr>
-             <td class="ranks">7</td>
-             <td>Song Yadong (20-7-1)</td>
-         </tr>
-         <tr>
-             <td class="ranks">8</td>
-             <td>Deiveson Figueiredo (22-3-1)</td>
-         </tr>
-         <tr>
-             <td class="ranks">9</td>
-             <td>Rob Font (20-8-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">10</td>
-             <td>Dominic Cruz (24-4-0)</td>
-         </tr>
-     </tbody>
- </table>
+        <tbody>
+    
+        <?php    for ($v = 1; $v <= 10 && $row8 = mysqli_fetch_assoc($result8); $v++) { 
+            if($v==1){    ?>
+             <td class ="jj1">C</td>
+             <td class = "jj"><?php echo $c7['Name'];?>(<?php echo $c7['Wins']. '-' .$c7['Losses'] . '-' . $c7['Draws'];?>)<br><img src="<?php echo $bwc['Link']   ?>" alt=""></td>
+
+               
+           <?php }   ?>     
+    
+        <tr>
+            <td class="ranks"><?php echo $v; ?></td>
+            <td><?php echo $row8['Name']; ?> ( <?php echo $row8['Wins'] . '-' . $row8['Losses'] . '-' . $row8['Draws']; ?>)</td>
+        </tr>   
+        <?php
+        }
+         
+        ?>
+        </tbody>
+    </table>
  
 </section>
 <br><br>
 <section id="section8">
-    <div class="space"><h2>Flyweight</h2></div>
+     
+<div class="space"><h2>Flyweight</h2><button class="back"><a href="Main.php">back</a></button></div>
     <table class="hw">
-     <tbody>
-         <tr>
-             <td class="jj1">C</td>
-             <td class="jj">Alexander Pantoja (26-5-0) <br><img src="pantoja.jpg" alt=""></td>
-         </tr>
-         <tr>
-             <td class="ranks">1</td>
-             <td>Brandon Moreno (21-7-2)</td>
-         </tr>
-         <tr>
-             <td class="ranks">2</td>
-             <td>Amir Albazi (17-1-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">3</td>
-             <td>Brandon Royval (15-6-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">4</td>
-             <td>Kai Kara-France(24-11-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">5</td>
-             <td>Matheus Nicolau (19-4-1)</td>
-         </tr>
-         <tr>
-             <td class="ranks">6</td>
-             <td>Manel Kape (19-6-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">7</td>
-             <td>Alex Perez (24-7-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">8</td>
-             <td>Matt Schnell (16-7-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">9</td>
-             <td>Muhammad Mokaev (11-0-0)</td>
-         </tr>
-         <tr>
-             <td class="ranks">10</td>
-             <td>Tim Elliot (20-13-0)</td>
-         </tr>
-     </tbody>
- </table>
- 
+        <tbody>
+    
+        <?php    for ($o = 1; $o <= 10 && $row9 = mysqli_fetch_assoc($result9); $o++) { 
+            if($o==1){    ?>
+             <td class ="jj1">C</td>
+             <td class = "jj"><?php echo $c8['Name'];?>(<?php echo $c8['Wins']. '-' .$c8['Losses'] . '-' . $c8['Draws'];?>)<br><img src=" <?php  echo $fwc['Link']  ?>  " alt=""></td>
+
+               
+           <?php }   ?>     
+    
+        <tr>
+            <td class="ranks"><?php echo $o; ?></td>
+            <td><?php echo $row9['Name']; ?> ( <?php echo $row9['Wins'] . '-' . $row9['Losses'] . '-' . $row9['Draws']; ?>)</td>
+        </tr>   
+        <?php
+        }
+         
+        ?>
+        </tbody>
+    </table>
 
 </section>
-
 </body>
 </html>

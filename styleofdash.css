@@ -1,99 +1,68 @@
-.menu{
-    display: flex;
+body {
+   background-image: url(blud.png);
+   margin: 0;
+   font-family: 'YourPreferredFont', sans-serif;
+}
+
+.menu {
+   display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 5px;
+   padding: 10px;
+   background-color: #333;
 }
 
-
-#search{
- float: center;
- padding: 6px;
- border: none;
- margin-top: 8px;
- margin-right: 16px;
- font-size: 17px;
- width: 400px;
- border-style: double;
- border: 5px;
- border-color: black;
-
-}
-
-button{
-   top: 0;
-   right: 0;
+button {
    font-weight: bold;
+   cursor: pointer;
 }
-.main{
-display: flex;        
+
+.main {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   padding: 10px;
 }
-.priv{
-   display: inline;
-   width: 400px;
-   height: 700px;
-   background-color: cyan;
-     
+
+.priv {
+   width: 100%;
+   margin-bottom: 10px;
 }
-.btn{
+
+.btn {
    height: 100%;
    width: 100%;
 }
-.users{
-height: 33.33% ;
-}
-.fighters{
 
-   height: 33.33% ;
+.users, .fighters, .comments {
+   height: 100%;
+   border: 1px solid black;
+   margin-bottom: 10px;
 }
-.comments{
 
-   height: 33.33% ;
-}
-.rg1{
-   width: 1400px;
-   height: 700px;
-   display: none;
-   text-align: center;
-   align-items: center;  
+table {
    background-color: white;
-}
-table{
-  border-style: solid;
-   border-width: 2px;
-   border-color: black;
-   width: 800px;
-   height: 400px;
-}
-td{
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
- 
-}
-th{
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
-  
-}
-.userstable{
-    margin: auto; 
-}
-.rg2{
-   display: none;
-   width: 1400px;
-   height: 700px;
-   background-color: green;
-}
-.rg3{
-   display: none;
-   width: 1400px;
-   height: 700px;
-   background-color: white;
-   align-items: left;
+   border: 5px solid black;
+   width: 100%;
    text-align: center;
 }
-.commentstable{
-   margin: 5px left; 
+
+td, th {
+   border: 2.5px solid black;
+   text-align: center;
 }
+
+.userstable th,
+.userstable td {
+   border: 1px solid black;
+   padding: 5px;
+   text-align: left;
+   width: auto;
+}
+
+.rg1, .rg2, .rg3 {
+   width: 100%;
+   padding: 10px;
+   box-sizing: border-box;
+}
+

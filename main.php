@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+require('connect.php');
 
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
@@ -12,13 +13,42 @@ $isadmin = false;
 if($_SESSION['username'] == 'admin'){
      $isadmin = true;     
 }
+   
+
+$g1 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g1'"));
+$g2 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g2'"));
+$g3 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g3'"));
+$g4 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g4'"));
+$g5 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g5'"));
+$g6 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g6'"));
+$g7 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g7'"));
+$g8 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g8'"));
+$g9 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g9'"));
+$g10 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM goatphotos WHERE Name = 'g10'"));
+ 
+
+
+$diaz = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 1"));
+$gaetheje = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 2"));
+$pereira = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 3"));
+$connor = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 4"));
+$ngannou = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 5"));
+$holloway = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 6"));
+$chandler = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 7"));
+$porier = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 8"));
+$tony = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 9"));
+$khamzat = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 10"));
+$olivera = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 11"));
+$volk = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM exitingfighters WHERE id = 12"));
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Document</title>
-    <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 <section id="section1">
 <body class="bd"> 
@@ -51,11 +81,11 @@ if($_SESSION['username'] == 'admin'){
         <div class="foto" onclick="darkmode()">
             <img src="ufc.jpg" alt="UFC">
         </div>
-
+ 
         <div>
             <label for="about"><a href="aboutus.php" target="_blank"
                     style="text-decoration: none; color: inherit; font-weight: bold;" class="rg">About Us</a></label>
-            <label for="contact"><a href="contactus.html" target="_blank"
+            <label for="contact"><a href="contactus.php" target="_blank"
                     style="text-decoration: none; color: inherit; font-weight: bold;" class="rg">Contact Us</a></label>
             <label for="profile"><a href="profile.php" target="_blank"
                     style="text-decoration: none; color: inherit; font-weight: bold;" class="rg">View profile</a></label>          
@@ -84,7 +114,7 @@ if($_SESSION['username'] == 'admin'){
       </section>
      
       <section id="section3">
-        
+      <div class="space"></div>
    <div class="slider2">
     <div class="imagebox2">
         <img src="exiting.jpg" class="fotot2">
@@ -94,7 +124,6 @@ if($_SESSION['username'] == 'admin'){
         <button class="btn2" onclick="prev2()">Previous</button>
         <button class="btn2" onclick="next2()">Next</button>
     </div>
-    
       </div>
       </section>
       <section id="ending" class="ending-section">
@@ -128,7 +157,7 @@ if($_SESSION['username'] == 'admin'){
 
 
     var sliderimg = document.querySelector('.fotot');
-    var images = ['jon.jpg','gsp.jpg','dj.jpg','khabib.jpeg','dc.jpg','silva.jpg','volk.jpg','usman.jpg','cejudo.jpg','connorm.jpg'];
+    var images = ['<?php echo $g1['Link'] ?>','<?php echo $g2['Link'] ?>','<?php echo $g3['Link'] ?>','<?php echo $g4['Link'] ?>','<?php echo $g5['Link'] ?>','<?php echo $g6['Link'] ?>','<?php echo $g7['Link'] ?>','<?php echo $g8['Link'] ?>','<?php echo $g9['Link'] ?>','<?php echo $g10['Link'] ?>'];
     let i =-1 ; 
     
     
@@ -154,31 +183,31 @@ function next(){
 
 function list(){
     if (i === 0) {
-        document.getElementById('h').innerHTML = "1. Jon Jones";
+        document.getElementById('h').innerHTML = "1. <?php echo $g1['Fighter']  ?>";
         } else if (i === 1) {
-        document.getElementById('h').innerHTML = "2. George Saint Pierre";
+        document.getElementById('h').innerHTML = "2. <?php echo $g2['Fighter']  ?>";
     } else if (i === 2) {
-        document.getElementById('h').innerHTML = "3. Demetrious Johnson";
+        document.getElementById('h').innerHTML = "3. <?php echo $g3['Fighter']  ?>";
     } else if (i === 3) {
-        document.getElementById('h').innerHTML = "4. Khabib Nurmagomedov";
+        document.getElementById('h').innerHTML = "4. <?php echo $g4['Fighter']  ?>";
     } else if (i === 4) {
-        document.getElementById('h').innerHTML = "5. Daniel Cormier";
+        document.getElementById('h').innerHTML = "5. <?php echo $g5['Fighter']  ?>";
     }
     else if (i === 5) {
-        document.getElementById('h').innerHTML = "6. Anderson Silva";
+        document.getElementById('h').innerHTML = "6. <?php echo $g6['Fighter']  ?>";
     } else if (i === 6) {
-        document.getElementById('h').innerHTML = "7. Alexander Volkanovski";
+        document.getElementById('h').innerHTML = "7. <?php echo $g7['Fighter']  ?>";
     } else if (i === 7) {
-        document.getElementById('h').innerHTML = "8. Kamaru Usman";
+        document.getElementById('h').innerHTML = "8. <?php echo $g8['Fighter']  ?>";
     } else if (i === 8) {
-        document.getElementById('h').innerHTML = "9. Henry Cejudo";
+        document.getElementById('h').innerHTML = "9. <?php echo $g9['Fighter']  ?>";
     } else if (i === 9) {
-        document.getElementById('h').innerHTML = "10. Connor McGregor";    
+        document.getElementById('h').innerHTML = "10. <?php echo $g10['Fighter']  ?>";    
       
 }     
 }
 
-    
+     
 function setimg(){
     sliderimg.setAttribute('src', images[i]);
     list();
@@ -187,7 +216,8 @@ function setimg(){
 //------------------------------------------------------------------------------------------------//
 
 var sliderimg2 = document.querySelector('.fotot2');
-    var images2 = ['diaz.jpg','gaetheje.jpg','pereira.jpg','connorm.jpg','ngannou.jpg','holloway.jpg','chandler.jpg','porier.jpg','tony.webp','khamzat.webp','olivera.jpg','volk.jpg'];
+    var images2 = ['<?php echo $diaz['Link'] ?>','<?php echo $gaetheje['Link'] ?>','<?php echo $pereira['Link'] ?> ','<?php echo $connor['Link']  ?>','<?php  echo $ngannou['Link']  ?>','<?php echo $holloway['Link']?>'
+    ,'<?php echo $chandler['Link'] ?>','<?php echo $porier['Link']  ?>','<?php echo $tony['Link']  ?>','<?php echo $khamzat['Link'] ?>','<?php  echo  $olivera['Link']  ?>','<?php echo $volk['Link'] ?>'];
     let g =-1 ; 
               
 function prev2(){
@@ -210,31 +240,31 @@ function next2(){
 
 function list2(){
     if (g === 0) {
-        document.getElementById('h2').innerHTML = "Nate Diaz";
+        document.getElementById('h2').innerHTML = "<?php echo $diaz['Fighter']  ?>";
         } else if (g === 1) {
-        document.getElementById('h2').innerHTML = "Justin Gaethejee";
+        document.getElementById('h2').innerHTML = "<?php echo $gaetheje['Fighter']  ?>";
     } else if (g === 2) {
-        document.getElementById('h2').innerHTML = "Alex Pereira";
+        document.getElementById('h2').innerHTML = "<?php echo $pereira['Fighter']  ?>";
     } else if (g === 3) {
-        document.getElementById('h2').innerHTML = "Connor McGregor";
+        document.getElementById('h2').innerHTML = "<?php echo $connor['Fighter']  ?>";
     } else if (g === 4) {   
-        document.getElementById('h2').innerHTML = "Francis Ngannou";
+        document.getElementById('h2').innerHTML = "<?php echo $ngannou['Fighter']  ?>";
     }
     else if (g === 5) {
-        document.getElementById('h2').innerHTML = "Max Holloway";
+        document.getElementById('h2').innerHTML = "<?php echo $holloway['Fighter']  ?>";
     } else if (g === 6) {
-        document.getElementById('h2').innerHTML = "Michael Chandler";
+        document.getElementById('h2').innerHTML = "<?php echo $chandler['Fighter']  ?>";
     } else if (g === 7) {
-        document.getElementById('h2').innerHTML = "Dustin Porier";
+        document.getElementById('h2').innerHTML = "<?php echo $porier['Fighter']  ?>";
     } else if (g === 8) {
-        document.getElementById('h2').innerHTML = "Tony Ferguson";
+        document.getElementById('h2').innerHTML = "<?php echo $tony['Fighter']  ?>";
     } else if (g === 9) {
-        document.getElementById('h2').innerHTML = "Khamzat Chimaev";          
+        document.getElementById('h2').innerHTML = "<?php echo $khamzat['Fighter']  ?>";          
     }    
    else if (g === 10) {
-        document.getElementById('h2').innerHTML = "Charles Olivera";          
+        document.getElementById('h2').innerHTML = "<?php echo $olivera['Fighter']  ?>";          
 }else if(g===11){
-    document.getElementById('h2').innerHTML = "Alexander Volkanovski";    
+    document.getElementById('h2').innerHTML = "<?php echo $volk['Fighter']  ?>";    
 }
 
 }
@@ -245,11 +275,6 @@ function setimg2(){
     list2();
 }
   
-
-
-
- 
-
  function darkmode(){
     document.body.classList.toggle("darktheme");
  }

@@ -1,99 +1,142 @@
-.menu{
-    display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 5px;
+body {
+  background-image: url(blud.png);
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
 }
 
 
-#search{
- float: center;
- padding: 6px;
- border: none;
- margin-top: 8px;
- margin-right: 16px;
- font-size: 17px;
- width: 400px;
- border-style: double;
- border: 5px;
- border-color: black;
-
+button {
+  top: 0;
+  right: 0;
+  font-weight: bold;
 }
 
-button{
-   top: 0;
-   right: 0;
-   font-weight: bold;
-}
-.main{
-display: flex;        
-}
-.priv{
-   display: inline;
-   width: 400px;
-   height: 700px;
-   background-color: cyan;
-     
-}
-.btn{
-   height: 100%;
-   width: 100%;
-}
-.users{
-height: 33.33% ;
-}
-.fighters{
-
-   height: 33.33% ;
-}
-.comments{
-
-   height: 33.33% ;
-}
-.rg1{
-   width: 1400px;
-   height: 700px;
-   display: none;
-   text-align: center;
-   align-items: center;  
-   background-color: white;
-}
-table{
-  border-style: solid;
-   border-width: 2px;
-   border-color: black;
-   width: 800px;
-   height: 400px;
-}
-td{
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
- 
-}
-th{
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
+.main {
+  display: flex;
   
 }
-.userstable{
-    margin: auto; 
+
+.priv {
+  display: inline;
+  width: 400px;
+  height: 700px;
+  background-color: gray;
 }
-.rg2{
-   display: none;
-   width: 1400px;
-   height: 700px;
-   background-color: green;
+
+.btn {
+  height: 100%;
+  width: 100%;
 }
-.rg3{
-   display: none;
-   width: 1400px;
-   height: 700px;
-   background-color: white;
-   align-items: left;
-   text-align: center;
+
+.users {
+  height: 33.33%;
+  border: 1px solid black;
 }
-.commentstable{
-   margin: 5px left; 
+
+.fighters {
+  height: 33.33%;
+  border: 1px solid black;
 }
+
+.comments {
+  border: 1px solid black;
+  height: 33.33%;
+}
+.comments td,.comments th{
+  width: 50px;
+
+}
+.rg1 {
+  width: 100%;
+  height: 700px;
+  display: none;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+table {
+  background-color: white;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+td {
+  border-style: solid;
+  border-width: 2.5px;
+  border-color: black;
+  text-align: center;
+}
+
+th {
+  border-style: solid;
+  border-width: 2.5px;
+  border-color: black;
+}
+
+.userstable {
+  margin: auto;
+  background-position: center;
+  text-align: center;
+}
+
+.userstable th,
+.userstable td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: left;
+  width: 200px;
+}
+
+.rg2 {
+  width: 100%;
+  height: 700px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.fighterstable {
+  flex-grow: 1;
+}
+
+@media (max-width: 800px) {
+  .rg2 {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+.back{
+   margin-left: 1150px;
+}
+
+.rg3 {
+  width: 100%;
+  height: 700px;
+  display: none;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#searchbar {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
