@@ -1,144 +1,68 @@
 body {
    background-image: url(blud.png);
- }
- 
- .menu {
+   margin: 0;
+   font-family: 'YourPreferredFont', sans-serif;
+}
+
+.menu {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 5px;
- }
- 
- 
- button {
-   top: 0;
-   right: 0;
-   font-weight: bold;
- }
- 
- .main {
-   display: flex;
-   
- }
- 
- .priv {
-   display: inline;
-   width: 400px;
-   height: 700px;
-   background-image: url(blud.png);
- }
- 
- .btn {
-   height: 100%;
-   width: 100%;
-   
- }
- 
- .users {
-   height: 33.33%;
-   border: 1px solid black;
- }
- 
- .fighters {
-   height: 33.33%;
-   border: 1px solid black;
- }
- 
- .comments {
-   border: 1px solid black;
-   height: 33.33%;
- }
- .comments td,.comments th{
-   width: 50px;
- 
- }
- .rg1 {
-   width: 100%;
-   height: 700px;
-   display: none;
-   text-align: center;
-   align-items: center;
    padding: 10px;
-   box-sizing: border-box;
- }
- 
- table {
-   background-color: white;
-   border-style: solid;
-   border-width: 5px;
-   border-color: black;
+   background-color: #333;
+}
+
+button {
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.main {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   padding: 10px;
+}
+
+.priv {
+   width: 100%;
+   margin-bottom: 10px;
+}
+
+.btn {
    height: 100%;
    width: 100%;
-   align-items: center;
+}
+
+.users, .fighters, .comments {
+   height: 100%;
+   border: 1px solid black;
+   margin-bottom: 10px;
+}
+
+table {
+   background-color: white;
+   border: 5px solid black;
+   width: 100%;
    text-align: center;
- }
- 
- td {
-   border-style: solid;
-   border-width: 2.5px;
-   border-color: black;
+}
+
+td, th {
+   border: 2.5px solid black;
    text-align: center;
- }
- 
- th {
-   border-style: solid;
-   border-width: 2.5px;
-   border-color: black;
- }
- 
- .userstable {
-   margin: auto;
-   background-position: center;
-   text-align: center;
- }
- 
- .userstable th,
- .userstable td {
+}
+
+.userstable th,
+.userstable td {
    border: 1px solid black;
    padding: 5px;
    text-align: left;
-   width: 200px;
- }
- 
- .rg2 {
+   width: auto;
+}
+
+.rg1, .rg2, .rg3 {
    width: 100%;
-   height: 700px;
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   grid-gap: 5px;
    padding: 10px;
    box-sizing: border-box;
- }
- 
- .fighterstable {
-   flex-grow: 1;
- }
- 
- @media (max-width: 800px) {
-   .rg2 {
-       grid-template-columns: repeat(2, 1fr);
-   }
- }
- .back{
-    margin-left: 1150px;
- }
- 
- .rg3 {
-   width: 100%;
-   height: 700px;
-   display: none;
-   text-align: center;
-   align-items: center;
-   padding: 10px;
-   box-sizing: border-box;
- }
- 
- #searchbar {
-   display: none;
- }
- 
- a {
-   text-decoration: none;
- }
- 
- 
+}
+

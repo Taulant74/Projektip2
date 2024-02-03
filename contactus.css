@@ -158,7 +158,6 @@
          align-items: flex-start;
      }
 
-
      .menu-item {
          margin-bottom: 10px;
          margin-right: 0;
@@ -192,5 +191,3 @@
  .submenu a:hover {
      background-color: #555;
  }
-
- 

@@ -2,31 +2,10 @@
 session_start();
 require('connect.php');
 
-class FighterEditor {
-    private $conn;
-
-    public function __construct($conn) {
-        $this->conn = $conn;
-    }
-
-    public function getFighterById($fighterId) {
-        $query = "SELECT * FROM hwcontenders WHERE ID=$fighterId";
-        $result = mysqli_query($this->conn, $query);
-        return mysqli_fetch_assoc($result);
-    }
-
-    public function updateFighter($fighterId, $newName, $newWins, $newLosses, $newDraws) {
-        $updateQuery = "UPDATE hwcontenders SET Name='$newName', Wins='$newWins', Losses='$newLosses', Draws='$newDraws' WHERE ID=$fighterId";
-        mysqli_query($this->conn, $updateQuery);
-    }
-}
-
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
-
-$fighterEditor = new FighterEditor($conn);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fighterId = $_POST['fighter_id'];
@@ -35,11 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newLosses = $_POST['new_losses'];
     $newDraws = $_POST['new_draws'];
 
-    $fighterEditor->updateFighter($fighterId, $newName, $newWins, $newLosses, $newDraws);
+    
+    $updateQuery = "UPDATE hwcontenders SET Name='$newName', Wins='$newWins', Losses='$newLosses', Draws='$newDraws' WHERE ID=$fighterId";
+    mysqli_query($conn, $updateQuery);
 }
 
 $fighterId = $_GET['id'];
-$fighter = $fighterEditor->getFighterById($fighterId);
+$query = "SELECT * FROM hwcontenders WHERE ID=$fighterId";
+$result = mysqli_query($conn, $query);
+$fighter = mysqli_fetch_assoc($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -49,12 +33,13 @@ $fighter = $fighterEditor->getFighterById($fighterId);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Fighters</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="dashh.css">
 </head>
 
 <body>
     <div class="menu">
         <h2>Edit Fighters</h2>
+        <h2><a href="logout.php">Log out</a></h2>
     </div>
     <hr>
     <div class="main">

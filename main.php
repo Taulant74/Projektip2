@@ -232,7 +232,7 @@ return setimg2();
 function next2(){
    
     if(g>= images2.length - 1) g = -1;
-    g++;  
+    g++;
    
     return setimg2(); 
  
