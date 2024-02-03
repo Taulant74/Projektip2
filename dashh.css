@@ -1,5 +1,5 @@
 body {
-  background-image: url(blud.png);
+  background-image: url(uu.jpg);
 }
 
 .menu {
@@ -8,7 +8,9 @@ body {
   align-items: center;
   padding: 5px;
 }
-
+#hh{
+  color: white;
+}
 
 button {
   top: 0;
@@ -25,12 +27,14 @@ button {
   display: inline;
   width: 400px;
   height: 700px;
-  background-color: gray;
+  background-image: url("https://i.pinimg.com/originals/52/11/33/5211331c3267926037327cb79eab9bd8.jpg");
 }
 
 .btn {
   height: 100%;
   width: 100%;
+  color: white;
+  font: 200;
 }
 
 .users {
@@ -62,7 +66,6 @@ button {
 }
 
 table {
-  background-color: white;
   border-style: solid;
   border-width: 5px;
   border-color: black;
@@ -70,6 +73,7 @@ table {
   width: 100%;
   align-items: center;
   text-align: center;
+  filter: brightness(1.4);
 }
 
 td {
@@ -120,6 +124,9 @@ th {
 }
 .back{
    margin-left: 1150px;
+   background-color: rgb(91, 0, 0);
+  color: white ;
+  font-style: oblique ;
 }
 
 .rg3 {
@@ -132,9 +139,7 @@ th {
   box-sizing: border-box;
 }
 
-#searchbar {
-  display: none;
-}
+
 
 a {
   text-decoration: none;
