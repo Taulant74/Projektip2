@@ -77,12 +77,23 @@ class ContactUsPage {
                         <label for="message">Leave your comment:</label>
                         <textarea id="message" name="message" rows="4" placeholder="Your Comment" required></textarea>
 
-                        <button type="submit">Submit</button>
+                        <button type="submit" name="submit">Submit</button>
                     </form>
                 </section>';
     }
-}
 
+    public function handleFormSubmission()
+    {
+        if (isset($_POST['submit'])) {
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $comment = $_POST["message"];
+
+            $this->commentHandler->sendComment($name, $email, $comment);
+            $this->commentHandler->closeConnection();
+        }
+    }
+}
 
 $commentHandler = new CommentHandler($conn);
 $contactUsPage = new ContactUsPage($commentHandler);
@@ -93,6 +104,7 @@ echo '<!DOCTYPE html>
             <body class="light-mode">
                 ' . $contactUsPage->generateMenu() . '
                 ' . $contactUsPage->generateFormSection() . '
+                ' . $contactUsPage->handleFormSubmission() . '
             </body>
         </html>';
 ?>
