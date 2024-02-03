@@ -40,8 +40,8 @@ $result9 = mysqli_query($conn, "SELECT * FROM fwcontenders");
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="HW.css">
 </head>
