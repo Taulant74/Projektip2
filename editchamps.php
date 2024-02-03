@@ -28,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $updateQuery = "UPDATE champs SET Name='$newName', Wins='$newWins', Losses='$newLosses', Draws='$newDraws' WHERE ID=$champId";
     mysqli_query($conn, $updateQuery);
+
+    
     $updatephoto = "UPDATE photos SET Link='$newlink' WHERE ID=$champId";
     mysqli_query($conn, $updatephoto);
    
@@ -46,23 +48,23 @@ $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE id =
 <head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
     <title>Edit Fighters</title>
 </head>
 
 <body>
     <div class="menu">
         <h2>Edit Fighters</h2>
-        <h2><a href="logout.php">Log out</a></h2>
     </div>
     <hr>
     <div class="main">
         <form method="post" action="">
-        <img src="<?php echo $photo['Link'];?>" alt="" style="width: 300px; height: 250px;">
-        <button onclick="link()">Change Photo</button>
+        <img src="<?php echo $photo['Link'];?>" alt="" style="width: 300px; height: 250px;" id ="ph">
+        <button onclick="link(event)">Change Photo</button>
         <br><br>
         <div id ="link" style = "display:none;"> 
         <label for="new_link">Enter photo link:</label>
-        <input type="text" name="new_link" value="" required>  
+        <input type="text" name="new_link" value="" >  
         <input type="submit" value="Update Link">    
         </div>
        <br>
@@ -83,14 +85,14 @@ $photo = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM photos WHERE id =
 
             <input type="submit" value="Update Fighters">
             <br><br>  
-            <button><a href="dashboard.php">back</a></button>
+           <a href="dashboard.php">back</a>
         </form>
     </div>
 
     <script> 
-  function link(){
+ function link(event) {
+    event.preventDefault(); 
     document.querySelector('#link').style.display = 'block';
-  
   }
 
   

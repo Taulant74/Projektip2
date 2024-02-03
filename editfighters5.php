@@ -2,10 +2,33 @@
 session_start();
 require('connect.php');
 
+class FighterEditor {
+    private $conn;
+    private $tableName;
+
+    public function __construct($conn, $tableName) {
+        $this->conn = $conn;
+        $this->tableName = $tableName;
+    }
+
+    public function getFighterById($fighterId) {
+        $query = "SELECT * FROM {$this->tableName} WHERE ID=$fighterId";
+        $result = mysqli_query($this->conn, $query);
+        return mysqli_fetch_assoc($result);
+    }
+
+    public function updateFighter($fighterId, $newName, $newWins, $newLosses, $newDraws) {
+        $updateQuery = "UPDATE {$this->tableName} SET Name='$newName', Wins='$newWins', Losses='$newLosses', Draws='$newDraws' WHERE ID=$fighterId";
+        mysqli_query($this->conn, $updateQuery);
+    }
+}
+
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
+
+$fighterEditor = new FighterEditor($conn, 'lwcontenders');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fighterId = $_POST['fighter_id'];
@@ -14,14 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newLosses = $_POST['new_losses'];
     $newDraws = $_POST['new_draws'];
 
-    $updateQuery = "UPDATE lwcontenders SET Name='$newName', Wins='$newWins', Losses='$newLosses', Draws='$newDraws' WHERE ID=$fighterId";
-    mysqli_query($conn, $updateQuery);
+    $fighterEditor->updateFighter($fighterId, $newName, $newWins, $newLosses, $newDraws);
 }
 
 $fighterId = $_GET['id'];
-$query = "SELECT * FROM lwcontenders WHERE ID=$fighterId";
-$result = mysqli_query($conn, $query);
-$fighter = mysqli_fetch_assoc($result);
+$fighter = $fighterEditor->getFighterById($fighterId);
 ?>
 
 <!DOCTYPE html>
@@ -31,13 +51,12 @@ $fighter = mysqli_fetch_assoc($result);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Fighters</title>
-    <link rel="stylesheet" href="dashh.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <div class="menu">
         <h2>Edit Fighters</h2>
-        <h2><a href="logout.php">Log out</a></h2>
     </div>
     <hr>
     <div class="main">
